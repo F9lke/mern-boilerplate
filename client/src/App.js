@@ -8,7 +8,10 @@ import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
-import Landing from "./modules/layout/Landing";
+import Landing from "./components/layout/Landing";
+import Login from "./modules/auth-module/Login";
+import Register from "./modules/auth-module/Register";
+import Dashboard from "./modules/dashboard-module/Dashboard";
 
 import "./main.css";
 
@@ -30,7 +33,19 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <Route exact path="/" component={Landing} />
+                    <div className="App">
+                        <Route exact path="/" component={Landing} />
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/register" component={Register} />
+
+                        <Switch>
+                            <PrivateRoute
+                                exact
+                                path="/dashboard"
+                                component={Dashboard}
+                            />
+                        </Switch>
+                    </div>
                 </Router>
             </Provider>
         );

@@ -5,7 +5,6 @@ const passport = require("passport");
 
 const users = require("./server/routes/api/users.routes");
 const groups = require("./server/routes/api/groups.routes");
-const chat = require("./server/routes/api/chat.routes");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -28,6 +27,5 @@ mongoose
 // Activate Routes
 app.use("/api/users", users);
 app.use("/api/groups", groups);
-app.use("/api/chat", chat);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
